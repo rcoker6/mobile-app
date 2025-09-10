@@ -1,1 +1,0 @@
-// Profile screen component

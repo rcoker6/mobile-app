@@ -4,28 +4,23 @@ A React Native mobile application with an organized codebase structure ready for
 
 ## Overview
 
-This is a mobile app built with React Native and Expo, featuring a clean, modular architecture with organized components, screens, and services. The app is designed to be easily extensible and maintainable.
+This project contains both the architectural planning and a working React Native/Expo application. The app is designed to integrate with WordPress/bbPress backend and features a clean, modular architecture.
 
 ## Project Structure
 
 ```
-src/
-├── components/          # Reusable UI components
-│   ├── articles/       # Article-related components
-│   ├── common/         # Common UI components (Button, Input)
-│   ├── forms/          # Form components
-│   └── forum/          # Forum-related components
-├── screens/            # App screens
-│   ├── articles/       # Article screens
-│   ├── auth/           # Authentication screens
-│   ├── forum/          # Forum screens
-│   └── profile/        # Profile screens
-├── navigation/         # Navigation configuration
-├── contexts/           # React contexts (AuthContext)
-├── hooks/              # Custom React hooks
-├── services/           # API and external services
-├── types/              # TypeScript type definitions
-└── utils/              # Utility functions and helpers
+mobile-app/                    # Main repository
+├── .git/                     # Git repository
+├── working-app/             # React Native/Expo application
+│   ├── App.tsx             # Main application component
+│   ├── src/                # Application source code
+│   │   └── services/       # API client and backend services
+│   ├── package.json        # React Native dependencies
+│   ├── node_modules/       # Installed packages
+│   └── app.json           # Expo configuration
+├── plan.md                 # Implementation plan
+├── API_DOCUMENTATION.md    # API documentation
+└── README.md              # This file
 ```
 
 ## Getting Started
@@ -44,51 +39,43 @@ src/
    cd mobile-app
    ```
 
-2. **Install Expo CLI globally**:
+2. **Install Expo CLI globally** (if not already installed):
    ```bash
    npm install -g @expo/cli
    ```
 
-3. **Create a new Expo project**:
-   ```bash
-   npx create-expo-app@latest ExtraChillExpo --template blank-typescript
-   cd ExtraChillExpo
-   ```
-
-4. **Copy the component structure**:
-   ```bash
-   cp -r ../mobile-app/src ./
-   ```
-
-5. **Install web dependencies**:
-   ```bash
-   npx expo install react-dom react-native-web @expo/metro-runtime
-   ```
-
-6. **Replace the default App.tsx** with your custom content:
-   ```bash
-   # Copy your custom App.tsx content to ExtraChillExpo/App.tsx
-   ```
-
 ### Running the App
 
-1. **Start the development server**:
+The React Native application is located in the `working-app/` directory.
+
+1. **Navigate to the working app**:
+   ```bash
+   cd working-app
+   ```
+
+2. **Start the development server**:
    ```bash
    npm start
    ```
 
-2. **Wait for the QR code and options to appear** in your terminal. You'll see:
+3. **Wait for the QR code and options to appear** in your terminal. You'll see:
    ```
    › Press i │ open iOS simulator
    › Press a │ open Android
    › Press w │ open web
    ```
 
-3. **Choose your preferred platform**:
+4. **Choose your preferred platform**:
    - **iOS Simulator**: Press `i` in the terminal (requires iOS Simulator setup - see below)
    - **Android Emulator**: Press `a` in the terminal (requires Android Studio setup)
    - **Web Browser**: Press `w` in the terminal
    - **Physical Device**: Scan the QR code with Expo Go app
+
+### Making Changes
+
+- **Edit the app**: Modify files in `working-app/App.tsx`
+- **See changes**: Hot reload will update the simulator automatically
+- **Commit changes**: From the main `mobile-app/` directory, use git as normal
 
 ## iOS Simulator Setup
 
@@ -120,50 +107,49 @@ If you encounter "No iOS devices available" error when pressing `i`:
 
 6. **Run your app**:
    ```bash
+   cd working-app
    npm start
    # Wait for the options to appear, then press 'i'
    ```
 
-## Android Emulator Setup
+## Development Workflow
 
-If you want to test on Android:
+### React Native Development
+- **Location**: `working-app/` directory contains the complete React Native application
+- **Purpose**: All development, testing, and simulator debugging happens here
+- **Structure**: Standard React Native/Expo project with organized source code in `working-app/src/`
 
-1. **Install Android Studio**:
-   - Download from [developer.android.com](https://developer.android.com/studio)
+### Key Files
+- **`working-app/App.tsx`**: Main application entry point (currently "Hello World")
+- **`working-app/src/services/apiClient.ts`**: Complete WordPress/bbPress API integration
+- **`plan.md`**: Development roadmap and implementation details
+- **`API_DOCUMENTATION.md`**: Complete API documentation and usage examples
 
-2. **Set up Android SDK**:
-   - Open Android Studio
-   - Go to Tools → SDK Manager
-   - Install Android SDK Platform and Android SDK Build-Tools
+### Git Workflow
+- **Development**: Edit files in `working-app/` and see changes immediately in simulator
+- **Committing**: All changes are tracked in the main repository from the root directory
 
-3. **Create an Android Virtual Device (AVD)**:
-   - Open Android Studio
-   - Go to Tools → AVD Manager
-   - Create a new virtual device
+## Project Features
 
-4. **Start the emulator**:
-   - Launch the AVD from Android Studio
-   - Or run: `emulator -avd <your_avd_name>`
+- **WordPress/bbPress Integration**: API client for forum and article functionality
+- **React Native + Expo**: Cross-platform mobile development
+- **TypeScript**: Type safety and better development experience
+- **Modular Architecture**: Clean separation of concerns
+- **Hot Reload**: Instant updates during development
+- **Dark/Light Mode**: Automatic theme switching
 
-5. **Run your app**:
-   ```bash
-   npm start
-   # Wait for the options to appear, then press 'a'
-   ```
+## API Documentation
 
-## Development
+See `API_DOCUMENTATION.md` for complete API client documentation including:
+- Authentication system with Bearer tokens
+- WordPress REST API integration
+- bbPress forum functionality
+- Error handling and pagination
+- Usage examples and troubleshooting
 
-The app uses:
-- **React Native** for cross-platform mobile development
-- **Expo** for simplified development and testing
-- **TypeScript** for type safety
-- **Modular architecture** for maintainability
+## Next Steps
 
-## Features
-
-- Dark/Light mode support
-- Organized component structure
-- Ready for authentication implementation
-- Forum and article functionality
-- Profile management
-- Clean navigation structure
+1. **Review the implementation plan**: Check `plan.md` for detailed development roadmap
+2. **Understand the API**: Read `API_DOCUMENTATION.md` for backend integration
+3. **Start developing**: Use `working-app/` for active React Native development
+4. **Test your changes**: Use the iOS simulator for immediate feedback

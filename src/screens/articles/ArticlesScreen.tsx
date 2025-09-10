@@ -1,1 +1,0 @@
-// Articles screen component

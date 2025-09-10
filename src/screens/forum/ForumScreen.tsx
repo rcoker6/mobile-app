@@ -1,1 +1,0 @@
-// Forum screen component

@@ -1,1 +1,0 @@
-// Forum topic card component
