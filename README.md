@@ -44,11 +44,17 @@ mobile-app/                    # Main repository
    npm install -g @expo/cli
    ```
 
+3. **Install project dependencies**:
+   ```bash
+   cd working-app
+   npm install
+   ```
+
 ### Running the App
 
 The React Native application is located in the `working-app/` directory.
 
-1. **Navigate to the working app**:
+1. **Navigate to the working app** (if not already there):
    ```bash
    cd working-app
    ```
