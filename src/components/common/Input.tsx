@@ -1,0 +1,1 @@
+// Common input component

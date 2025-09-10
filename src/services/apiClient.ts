@@ -1,0 +1,1 @@
+// API client for WordPress/bbPress integration
