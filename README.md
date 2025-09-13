@@ -39,30 +39,22 @@ mobile-app/                    # Main repository
    cd mobile-app
    ```
 
-2. **Install Expo CLI globally** (if not already installed):
+2. **Navigate to the working app directory**:
    ```bash
-   npm install -g @expo/cli
+   cd working-app
    ```
 
 3. **Install project dependencies**:
    ```bash
-   cd working-app
    npm install
    ```
 
 ### Running the App
 
-The React Native application is located in the `working-app/` directory.
-
-1. **Navigate to the working app** (if not already there):
-   ```bash
-   cd working-app
-   ```
-
-2. **Start the development server**:
-   ```bash
-   npm start
-   ```
+**Start the development server**:
+```bash
+npm start
+```
 
 3. **Wait for the QR code and options to appear** in your terminal. You'll see:
    ```
