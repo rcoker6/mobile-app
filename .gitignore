@@ -1,0 +1,7 @@
+# Claude Code settings
+.claude/
+
+# Common temp/system files
+nul
+Thumbs.db
+.DS_Store
