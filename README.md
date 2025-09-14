@@ -27,6 +27,12 @@ mobile-app/                    # Main repository
 
 ### Prerequisites
 
+- Clone the repo
+  
+  ```
+  https://github.com/Extra-Chill/mobile-app.git
+  ```
+  
 - Node.js (v16 or higher) - [Download here](https://nodejs.org/)
 - npm (comes with Node.js)
 - Git - [Download here](https://git-scm.com/)
