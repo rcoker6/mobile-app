@@ -75,40 +75,49 @@ npm start
 - **See changes**: Hot reload will update the simulator automatically
 - **Commit changes**: From the main `mobile-app/` directory, use git as normal
 
-## iOS Simulator Setup
+## Platform-Specific Setup
 
-If you encounter "No iOS devices available" error when pressing `i`:
+### Testing Platforms
 
-1. **Install Xcode** (if not already installed):
-   - Download from Mac App Store or [Apple Developer](https://developer.apple.com/xcode/)
+**Available on all platforms:**
+- **Web Browser**: `npm start` → press `w` (instant, no setup required)
+- **Physical Devices**: `npm start` → scan QR code with Expo Go app
 
-2. **Install iOS Simulator runtimes**:
-   ```bash
-   xcodebuild -downloadAllPlatforms
-   ```
-   *Note: This downloads ~8GB and may take 10-15 minutes*
+**Platform-specific requirements:**
+- **Android Emulator**: Requires Android Studio setup (Windows/Linux/Mac)
+- **iOS Simulator**: Requires macOS + Xcode (not available on Windows/Linux)
 
-3. **Create an iPhone simulator**:
-   ```bash
-   xcrun simctl create "iPhone 15" "iPhone 15" "iOS18.6"
-   ```
+### iOS Development Setup
 
-4. **Start the simulator**:
-   ```bash
-   xcrun simctl boot "iPhone 15"
-   open -a Simulator
-   ```
+If you need to set up iOS testing (macOS only), use this prompt with Claude Code:
 
-5. **Verify the simulator is running**:
-   - You should see an iPhone 15 simulator window open
-   - The simulator should show the iOS home screen
+```
+Help me set up Xcode and the iOS simulator for React Native testing in this codebase. I need you to:
 
-6. **Run your app**:
-   ```bash
-   cd working-app
-   npm start
-   # Wait for the options to appear, then press 'i'
-   ```
+1. Guide me through downloading and installing Xcode from the Mac App Store or Apple Developer site
+2. Help me install iOS Simulator runtimes and configure the development environment
+3. Create and configure an iPhone simulator device for testing
+4. Start the iOS simulator and verify it's working properly
+5. Test the setup by running the React Native app on the iOS simulator
+
+Please provide step-by-step guidance and help troubleshoot any issues that come up. This is a React Native/Expo project and all commands should be run from the working-app/ directory.
+```
+
+### Android Development Setup
+
+If you need to set up Android testing, use this prompt with Claude Code:
+
+```
+Help me set up Android Studio and the Android emulator for React Native testing in this codebase. I need you to:
+
+1. Guide me through downloading and installing Android Studio from https://developer.android.com/studio
+2. Help me configure the Android SDK with the required components (Android 14.0 API 34, SDK Build-Tools, Platform-Tools, Android Emulator)
+3. Set up the environment variables (ANDROID_HOME and PATH) for my operating system
+4. Create an Android Virtual Device (AVD) for testing
+5. Test the setup by running the React Native app on the Android emulator
+
+Please provide step-by-step guidance and help troubleshoot any issues that come up. This is a React Native/Expo project and all commands should be run from the working-app/ directory.
+```
 
 ## Development Workflow
 
