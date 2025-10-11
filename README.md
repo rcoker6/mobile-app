@@ -38,10 +38,6 @@ mobile-app/                    # Main repository (React Native/Expo application)
 
 ### Testing Platforms
 
-**Available on all platforms:**
-- **Web Browser**: `npm start` → press `w` (instant, no setup required)
-- **Physical Devices**: `npm start` → scan QR code with Expo Go app
-
 **Platform-specific requirements:**
 - **Android Emulator**: Requires Android Studio setup (Windows/Linux/Mac)
 - **iOS Simulator**: Requires macOS + Xcode (not available on Windows/Linux)
@@ -77,6 +73,14 @@ Help me set up Android Studio and the Android emulator for React Native testing 
 
 Please provide step-by-step guidance and help troubleshoot any issues that come up. This is a React Native/Expo project and all commands should be run from the root directory.
 ```
+After the installation:
+- run ```npm start``` in the ```working-app``` directory.
+- Press 'Y' to confirm the port
+- Choose your simulator environment:
+  - press i - iOS
+  - press a - android
+  - press w - web browser
+  - or scan the QR with your phone
 
 ## Development Workflow
 
