@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(adb:*)",
+      "Read(//c/Users/rcoke/OneDrive/Documents/Extra Chill App/mobile-app/**)",
+      "Bash(mv:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

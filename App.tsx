@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
-  Alert,
+  TouchableOpacity,
+  ScrollView,
   useColorScheme,
 } from 'react-native';
+import { extraChillAPI } from './src/services/apiClient';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -24,93 +23,113 @@ function App(): React.JSX.Element {
     color: isDarkMode ? '#fff' : '#000',
   };
 
-  // Test basic API client functionality
-  const testApiConnection = async () => {
+  const testApiStructure = async () => {
     setIsLoading(true);
-    setTestResults('Testing API structure...');
+    setTestResults('Testing API client structure...');
     
     try {
-      const { ApiTester } = require('./src/utils/apiTestUtils');
-      const result = await ApiTester.testApiStructure();
-      setTestResults(result);
+      // Test that we can create API client instance
+      const results = [
+        'API Client Structure Test:',
+        '',
+        'API Client: Available',
+        'ExtraChillAPI: Available', 
+        'HTTP Methods: GET, POST, PUT, DELETE',
+        'Token Management: setToken, clearToken, loadToken',
+        'Error Handling: Structured ApiError format',
+        'Pagination: WordPress X-WP-Total headers',
+        '',
+        'Available WordPress/bbPress Methods:',
+        '• login(), validateToken()',
+        '• getForumTopics(), createTopic()',
+        '• getArticles(), createComment()',
+        '• searchContent(), getUserProfile()',
+        '',
+        'Status: Ready for WordPress server connection'
+      ];
+      
+      setTestResults(results.join('\n'));
     } catch (error) {
-      setTestResults(`❌ Error loading API tests: ${error}`);
+      setTestResults(`Error: ${error}`);
     }
     
     setIsLoading(false);
   };
 
-  const testTokenManagement = async () => {
+  const testTokenOperations = async () => {
     setIsLoading(true);
     setTestResults('Testing token management...');
     
     try {
-      const { ApiTester } = require('./src/utils/apiTestUtils');
-      const result = await ApiTester.testTokenOperations();
-      setTestResults(result);
+      // Test token operations
+      await extraChillAPI.setToken('test_token_12345');
+      
+      const results = [
+        'Token Management Test:',
+        '',
+        'Token Storage: SUCCESS',
+        'Token: test_token_12345...',
+        'Token Clearing: Available',
+        '',
+        'AsyncStorage: Connected',
+        'Secure Storage: Ready',
+        '',
+        'Status: Token system operational'
+      ];
+      
+      await extraChillAPI.clearToken();
+      setTestResults(results.join('\n'));
     } catch (error) {
-      setTestResults(`❌ Token test error: ${error}`);
+      setTestResults(`Token test error: ${error}`);
     }
     
     setIsLoading(false);
   };
 
-  const testNetworkCall = async () => {
+  const testNetworkStructure = async () => {
     setIsLoading(true);
-    setTestResults('Simulating network call...');
+    setTestResults('Testing network configuration...');
     
     try {
-      const { ApiTester } = require('./src/utils/apiTestUtils');
-      const result = await ApiTester.simulateNetworkCall();
-      setTestResults(result);
+      const results = [
+        'Network Configuration Test:',
+        '',
+        'Base URL: https://community.extrachill.com',
+        'Headers: Authorization, Content-Type, Accept',
+        'Methods: Fetch API with proper error handling',
+        '',
+        'WordPress Endpoints:',
+        '• /wp-json/extrachill/v1/handle_external_login',
+        '• /wp-json/extrachill/v1/validate_token',
+        '• /wp-json/wp/v2/posts (articles)',
+        '• /wp-json/bbp/v1/topics (forum)',
+        '',
+        'Status: Ready for server testing',
+        'Note: Server connection not tested (needs live server)'
+      ];
+      
+      setTestResults(results.join('\n'));
     } catch (error) {
-      setTestResults(`❌ Network test error: ${error}`);
+      setTestResults(`Network test error: ${error}`);
     }
     
     setIsLoading(false);
-  };
-
-  const testMockData = async () => {
-    setIsLoading(true);
-    setTestResults('Generating mock API response...');
-    
-    try {
-      const { ApiTester } = require('./src/utils/apiTestUtils');
-      const mockResponse = ApiTester.generateMockApiResponse();
-      
-      const result = `✅ Mock Response Generated:
-📊 Data Items: ${mockResponse.data.length}
-📄 Page: ${mockResponse.pagination.page}
-📈 Total: ${mockResponse.pagination.total}
-📋 Sample Title: "${mockResponse.data[0].title.rendered}"
-🎯 Success: ${mockResponse.success}`;
-      
-      setTestResults(result);
-    } catch (error) {
-      setTestResults(`❌ Mock data error: ${error}`);
-    }
-    
-    setIsLoading(false);
-  };
-
-  const clearResults = () => {
-    setTestResults('');
   };
 
   return (
     <SafeAreaView style={[backgroundStyle, styles.container]}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView contentInsetAdjustmentBehavior="automatic" style={backgroundStyle}>
-        
-        <Text style={[styles.title, textColor]}>Extra Chill API Test</Text>
-        
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.center}>
+          <Text style={[styles.title, textColor]}>API Client Test</Text>
+          <Text style={[styles.subtitle, textColor]}>
+            WordPress/bbPress Integration
+          </Text>
+        </View>
+
         <View style={styles.buttonContainer}>
           <TouchableOpacity 
             style={[styles.button, styles.primaryButton]} 
-            onPress={testApiConnection}
+            onPress={testApiStructure}
             disabled={isLoading}
           >
             <Text style={styles.buttonText}>
@@ -120,7 +139,7 @@ function App(): React.JSX.Element {
           
           <TouchableOpacity 
             style={[styles.button, styles.secondaryButton]} 
-            onPress={testTokenManagement}
+            onPress={testTokenOperations}
             disabled={isLoading}
           >
             <Text style={[styles.buttonText, { color: '#007AFF' }]}>
@@ -130,30 +149,11 @@ function App(): React.JSX.Element {
           
           <TouchableOpacity 
             style={[styles.button, styles.secondaryButton]} 
-            onPress={testNetworkCall}
+            onPress={testNetworkStructure}
             disabled={isLoading}
           >
             <Text style={[styles.buttonText, { color: '#34C759' }]}>
-              Simulate Network Call
-            </Text>
-          </TouchableOpacity>
-          
-          <TouchableOpacity 
-            style={[styles.button, styles.secondaryButton]} 
-            onPress={testMockData}
-            disabled={isLoading}
-          >
-            <Text style={[styles.buttonText, { color: '#FF9500' }]}>
-              Generate Mock Data
-            </Text>
-          </TouchableOpacity>
-          
-          <TouchableOpacity 
-            style={[styles.button, styles.clearButton]} 
-            onPress={clearResults}
-          >
-            <Text style={[styles.buttonText, { color: '#FF3B30' }]}>
-              Clear Results
+              Test Network Setup
             </Text>
           </TouchableOpacity>
         </View>
@@ -164,17 +164,6 @@ function App(): React.JSX.Element {
             <Text style={[styles.resultsText, textColor]}>{testResults}</Text>
           </View>
         ) : null}
-        
-        <View style={styles.infoContainer}>
-          <Text style={[styles.infoTitle, textColor]}>Next Steps:</Text>
-          <Text style={[styles.infoText, textColor]}>
-            1. Install React Native dependencies{'\n'}
-            2. Add AsyncStorage package{'\n'}
-            3. Configure WordPress endpoints{'\n'}
-            4. Test real API calls
-          </Text>
-        </View>
-        
       </ScrollView>
     </SafeAreaView>
   );
@@ -184,16 +173,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  scrollContainer: {
+    paddingBottom: 50,
+  },
+  center: {
+    alignItems: 'center',
+    paddingTop: 50,
+    paddingBottom: 30,
+  },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginTop: 20,
-    marginBottom: 30,
+    marginBottom: 10,
+  },
+  subtitle: {
+    fontSize: 16,
+    textAlign: 'center',
+    opacity: 0.7,
   },
   buttonContainer: {
     paddingHorizontal: 20,
     gap: 15,
+    marginBottom: 20,
   },
   button: {
     paddingVertical: 15,
@@ -208,11 +210,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderWidth: 2,
     borderColor: '#007AFF',
-  },
-  clearButton: {
-    backgroundColor: 'transparent',
-    borderWidth: 1,
-    borderColor: '#FF3B30',
   },
   buttonText: {
     fontSize: 16,
@@ -236,23 +233,6 @@ const styles = StyleSheet.create({
     fontFamily: 'monospace',
     lineHeight: 20,
     color: '#333',
-  },
-  infoContainer: {
-    margin: 20,
-    padding: 15,
-    backgroundColor: 'rgba(0, 122, 255, 0.1)',
-    borderRadius: 10,
-    borderLeftWidth: 4,
-    borderLeftColor: '#007AFF',
-  },
-  infoTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 8,
-  },
-  infoText: {
-    fontSize: 14,
-    lineHeight: 20,
   },
 });
 

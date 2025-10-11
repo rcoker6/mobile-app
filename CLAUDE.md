@@ -4,29 +4,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Structure
 
-This is a React Native/Expo mobile application with a dual-directory structure:
+This is a React Native/Expo mobile application:
 
 ```
-mobile-app/                    # Main repository
-├── working-app/              # React Native/Expo application
-│   ├── App.tsx              # Main application component
-│   ├── src/services/        # API client and backend services
-│   ├── package.json         # React Native dependencies
-│   └── app.json            # Expo configuration
-├── plan.md                  # Implementation plan
-├── API_DOCUMENTATION.md     # API documentation
-└── README.md               # Project documentation
+mobile-app/                    # Main repository (React Native/Expo application)
+├── App.tsx                   # Main application component
+├── src/services/             # API client and backend services
+├── package.json              # React Native dependencies
+├── app.json                  # Expo configuration
+├── plan.md                   # Implementation plan
+├── API_DOCUMENTATION.md      # API documentation
+└── README.md                # Project documentation
 ```
-
-**Important**: All development work happens in the `working-app/` directory. The root directory contains documentation and planning files.
 
 ## Development Commands
 
-All commands must be run from the `working-app/` directory:
+All commands are run from the root directory:
 
 ```bash
-cd working-app
-
 # Start the development server
 npm start
 
@@ -47,7 +42,7 @@ npx expo install --fix
 ### Two-Layer API System
 - `ApiClient` (base class): HTTP methods, token management, error handling, pagination
 - `ExtraChillAPI` (extended class): WordPress/bbPress-specific methods
-- Located in: `working-app/src/services/apiClient.ts`
+- Located in: `src/services/apiClient.ts`
 
 ### Authentication Flow
 - JWT token-based authentication with AsyncStorage persistence
@@ -119,7 +114,7 @@ Help me set up Android Studio and the Android emulator for React Native testing 
 4. Create an Android Virtual Device (AVD) for testing
 5. Test the setup by running the React Native app on the Android emulator
 
-Please provide step-by-step guidance and help troubleshoot any issues that come up. This is a React Native/Expo project and all commands should be run from the working-app/ directory.
+Please provide step-by-step guidance and help troubleshoot any issues that come up. This is a React Native/Expo project and all commands should be run from the root directory.
 ```
 
 **Prerequisites (after setup):**
@@ -145,16 +140,15 @@ emulator -list-avds
 emulator -avd [AVD_NAME]
 
 # Build and deploy to Android
-cd working-app && npm run android
+npm run android
 ```
 
 ## Common Tasks
 
 When working with this codebase:
-1. Always navigate to `working-app/` directory first
-2. Use `npm start` to run the development server
-3. API changes go in `src/services/apiClient.ts`
-4. Main UI is in `App.tsx`
-5. For Android testing: ensure Android Studio is set up per README.md
-6. First Android builds take 3-5 minutes; subsequent builds are much faster
-7. Refer to `API_DOCUMENTATION.md` for complete API usage examples
+1. Use `npm start` to run the development server
+2. API changes go in `src/services/apiClient.ts`
+3. Main UI is in `App.tsx`
+4. For Android testing: ensure Android Studio is set up per README.md
+5. First Android builds take 3-5 minutes; subsequent builds are much faster
+6. Refer to `API_DOCUMENTATION.md` for complete API usage examples

@@ -9,18 +9,17 @@ This project contains both the architectural planning and a working React Native
 ## Project Structure
 
 ```
-mobile-app/                    # Main repository
+mobile-app/                    # Main repository (React Native/Expo application)
 ├── .git/                     # Git repository
-├── working-app/             # React Native/Expo application
-│   ├── App.tsx             # Main application component
-│   ├── src/                # Application source code
-│   │   └── services/       # API client and backend services
-│   ├── package.json        # React Native dependencies
-│   ├── node_modules/       # Installed packages
-│   └── app.json           # Expo configuration
-├── plan.md                 # Implementation plan
-├── API_DOCUMENTATION.md    # API documentation
-└── README.md              # This file
+├── App.tsx                  # Main application component
+├── src/                     # Application source code
+│   └── services/           # API client and backend services
+├── package.json            # React Native dependencies
+├── node_modules/           # Installed packages
+├── app.json               # Expo configuration
+├── plan.md                # Implementation plan
+├── API_DOCUMENTATION.md   # API documentation
+└── README.md             # This file
 ```
 
 ## Getting Started
@@ -60,7 +59,7 @@ Help me set up Xcode and the iOS simulator for React Native testing in this code
 4. Start the iOS simulator and verify it's working properly
 5. Test the setup by running the React Native app on the iOS simulator
 
-Please provide step-by-step guidance and help troubleshoot any issues that come up. This is a React Native/Expo project and all commands should be run from the working-app/ directory.
+Please provide step-by-step guidance and help troubleshoot any issues that come up. This is a React Native/Expo project and all commands should be run from the root directory.
 ```
 
 ### Android Development Setup
@@ -76,25 +75,25 @@ Help me set up Android Studio and the Android emulator for React Native testing 
 4. Create an Android Virtual Device (AVD) for testing
 5. Test the setup by running the React Native app on the Android emulator
 
-Please provide step-by-step guidance and help troubleshoot any issues that come up. This is a React Native/Expo project and all commands should be run from the working-app/ directory.
+Please provide step-by-step guidance and help troubleshoot any issues that come up. This is a React Native/Expo project and all commands should be run from the root directory.
 ```
 
 ## Development Workflow
 
 ### React Native Development
-- **Location**: `working-app/` directory contains the complete React Native application
+- **Location**: Root directory contains the complete React Native application
 - **Purpose**: All development, testing, and simulator debugging happens here
-- **Structure**: Standard React Native/Expo project with organized source code in `working-app/src/`
+- **Structure**: Standard React Native/Expo project with organized source code in `src/`
 
 ### Key Files
-- **`working-app/App.tsx`**: Main application entry point (currently "Hello World")
-- **`working-app/src/services/apiClient.ts`**: Complete WordPress/bbPress API integration
+- **`App.tsx`**: Main application entry point (currently "Hello World")
+- **`src/services/apiClient.ts`**: Complete WordPress/bbPress API integration
 - **`plan.md`**: Development roadmap and implementation details
 - **`API_DOCUMENTATION.md`**: Complete API documentation and usage examples
 
 ### Git Workflow
-- **Development**: Edit files in `working-app/` and see changes immediately in simulator
-- **Committing**: All changes are tracked in the main repository from the root directory
+- **Development**: Edit files and see changes immediately in simulator
+- **Committing**: All changes are tracked in the repository
 
 ## Project Features
 
@@ -118,5 +117,5 @@ See `API_DOCUMENTATION.md` for complete API client documentation including:
 
 1. **Review the implementation plan**: Check `plan.md` for detailed development roadmap
 2. **Understand the API**: Read `API_DOCUMENTATION.md` for backend integration
-3. **Start developing**: Use `working-app/` for active React Native development
+3. **Start developing**: Active React Native development in the root directory
 4. **Test your changes**: Use the iOS simulator for immediate feedback
